@@ -1,35 +1,50 @@
-import express, { Application, Request, Response } from "express";
-import ConfigService from "./utils/config";
+import express, { Application } from "express";
+import ConfigService from "./shared/config/config";
 import { LoggerService } from "./infra/logging/logger.service";
 import { LoggingConfiguration } from "./infra/logging/logging.config";
 import { DatabaseService } from "./infra/db/db.service";
+import { ErrorHandler } from "./shared/errors/error.handler";
+import { errorMiddleware } from "./shared/errors/error.middleware";
 
 export function startServer() {
     LoggingConfiguration.configure({
         enableConsole: true,
-        enableFile: true,
-        enableDatabase: true,
+        enableFile: false,
+        enableDatabase: false,
         logDir: 'logs',
         db: new DatabaseService()
     });
 
     const logger = LoggerService.getInstance();
+    const errorHandler = ErrorHandler.getInstance();
+
+    process.on('uncaughtException', (error) => {
+        errorHandler.handleError(error);
+        process.exit(1);
+    });
+
+    process.on('unhandledRejection', (error: Error) => {
+        errorHandler.handleError(error);
+        process.exit(1);
+    });
+
     try {
         const app: Application = express();
         const configService = ConfigService.getInstance();
         const config = configService.getConfig();
-        const logging = LoggerService.getInstance();
-
-
 
         // Middleware
         app.use(express.urlencoded({extended: true}));
         app.use(express.json());
+        app.use(errorMiddleware);
 
         // Routes
-
-        // Error handling
-        // app.use();
+        // tekshirish kerak async holat bilan async siz holatni farqlarini
+        // kiyin workerlar bilan ishlarib ham tekshirish kerak 
+        // loglarni workergami yoki boshqa narsaga olib o'tish kerak
+        app.get("/", async (req, res) => {
+            res.send({ message: "Hello world"});
+        });
 
         const PORT: number = config.server.port;
 
