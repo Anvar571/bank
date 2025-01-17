@@ -60,4 +60,3 @@ export class LoggerService {
         await this.log(LogLevel.ERROR, message, meta);
     }
 }
-

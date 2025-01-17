@@ -8,8 +8,8 @@ import { errorMiddleware } from "./shared/errors/error.middleware";
 
 export function startServer() {
     LoggingConfiguration.configure({
-        enableConsole: true,
-        enableFile: false,
+        enableConsole: false,
+        enableFile: true,
         enableDatabase: false,
         logDir: 'logs',
         db: new DatabaseService()
@@ -42,7 +42,7 @@ export function startServer() {
         // tekshirish kerak async holat bilan async siz holatni farqlarini
         // kiyin workerlar bilan ishlarib ham tekshirish kerak 
         // loglarni workergami yoki boshqa narsaga olib o'tish kerak
-        app.get("/", async (req, res) => {
+        app.get("/", async (_, res) => {
             res.send({ message: "Hello world"});
         });
 
