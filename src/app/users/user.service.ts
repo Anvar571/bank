@@ -12,8 +12,17 @@ export class UserServiceImpl  implements UserService {
         this.hashService = hashService;
     }
 
-    public async getUser(user: Partial<UserDto>): Promise<User | undefined> {
-        return this.userRepository.findByItem(user);
+    public async findAllUsers(): Promise<User[] | []> {
+        return this.userRepository.findAllUsers();
+    }
+
+    public async findById(user: string): Promise<User | undefined> {
+        const res = await this.userRepository.findByItem({username: user});
+        
+        if (!res) {
+            throw new Error("User not found");
+        }
+        return res;
     }
 
     public async create(userData: UserDto): Promise<UserResponse | UserError> {
@@ -37,7 +46,6 @@ export class UserServiceImpl  implements UserService {
             resolve({
                 id: newUser.id,
                 created_at: newUser.created_at,
-                role: newUser.role,
             });
         });
     }

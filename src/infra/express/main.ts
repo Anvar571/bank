@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import { LoggerService } from "../logging/logger.service";
+import { mainRouter } from "./routes";
 
 export class ExpressApp {
     private static instance: ExpressApp;
@@ -9,6 +10,7 @@ export class ExpressApp {
     private constructor() {
         this.app = express();
         this.loggingService = LoggerService.getInstance();
+        this.middlewares();
     }
 
     public static getInstance(): ExpressApp {
@@ -29,6 +31,7 @@ export class ExpressApp {
         this.app.get("/", async (_, res) => {
             res.send({ message: "Hello world"});
         });
+        this.app.use("/", mainRouter);
     }
 
     public start(PORT: number) {

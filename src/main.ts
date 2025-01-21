@@ -1,17 +1,15 @@
 import ConfigService from "./shared/config/config";
 import { LoggerService } from "./infra/logging/logger.service";
 import { LoggingConfiguration } from "./infra/logging/logging.config";
-import { DatabaseService } from "./infra/db/db.service";
 import { ErrorHandler } from "./shared/errors/error.handler";
 import { ExpressApp } from "./infra/express/main";
 
 export function startServer() {
     LoggingConfiguration.configure({
-        enableConsole: false,
-        enableFile: true,
+        enableConsole: true,
+        enableFile: false,
         enableDatabase: false,
         logDir: 'logs',
-        db: new DatabaseService()
     });
 
     const logger = LoggerService.getInstance();

@@ -1,3 +1,5 @@
+import { User } from "./users";
+
 export enum UserType {
     INDIVIDUALS = "individuals",
 }
@@ -31,9 +33,10 @@ export interface UserError {
 export interface UserResponse {
     id: number;
     created_at: Date;
-    role: string;
 }
 
 export interface UserService {
     create: (user: UserDto) => Promise<UserResponse | UserError>;
+    findAllUsers: ()=> Promise<User[] | []>;
+    findById: (username: string) => Promise<User | undefined>;
 }

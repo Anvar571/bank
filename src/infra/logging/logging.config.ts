@@ -1,4 +1,3 @@
-import { DatabaseService } from "../db/db.service";
 import { ConsoleLoggingStrategy } from "./console.strategy";
 import { FileLoggingStrategy } from "./file.strategy";
 import { LoggerService } from "./logger.service";
@@ -9,7 +8,6 @@ export class LoggingConfiguration {
         enableFile?: boolean;
         enableDatabase?: boolean;
         logDir?: string;
-        db?: DatabaseService;
     }): void {
         const logger = LoggerService.getInstance();
         logger.clearStrategies();
