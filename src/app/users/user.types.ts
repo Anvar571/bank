@@ -10,15 +10,30 @@ export interface UserModel {
     balance: number;
     phone: number;
     type: UserType,
+    created_at: Date;
+    updated_at: Date;
 }
 
-export interface CreateUser {
+export interface UserDto {
     username: string;
     jshir: string;
     passport_number: string;
     phone: number;
 }
 
-export interface UserReturnData {
+// Error types
+export interface UserError {
+    code: 'USER_EXISTS' | 'INTERNAL_ERROR';
+    message: string;
+}
+
+// Success response type
+export interface UserResponse {
     id: number;
+    created_at: Date;
+    role: string;
+}
+
+export interface UserService {
+    create: (user: UserDto) => Promise<UserResponse | UserError>;
 }

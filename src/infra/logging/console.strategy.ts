@@ -1,4 +1,4 @@
-import { LogContext, LoggingStrategy, LogLevel } from "./logging.strategy";
+import { LogContext, LoggingStrategy } from "./logging.strategy";
 
 export class ConsoleLoggingStrategy implements LoggingStrategy {
     log(context: LogContext): void {

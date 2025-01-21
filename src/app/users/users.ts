@@ -33,4 +33,12 @@ export class User extends BaseClass<UserModel> implements UserModel {
     public get type() {
         return this.data.type;
     }
+
+    public get created_at() {
+        return this.data.created_at;
+    }
+
+    public get updated_at() {
+        return this.data.updated_at;
+    }
 }
