@@ -1,6 +1,7 @@
-import express, { Application } from "express";
+import express, { Application, Router } from "express";
 import { LoggerService } from "../logging/logger.service";
-import { mainRouter } from "./routes";
+import { Routes } from "../../shared/interface/route.interface";
+import { UserRoute } from "./routes/users.route";
 
 export class ExpressApp {
     private static instance: ExpressApp;
@@ -11,6 +12,9 @@ export class ExpressApp {
         this.app = express();
         this.loggingService = LoggerService.getInstance();
         this.middlewares();
+        this.initialazeRoutes([
+            new UserRoute(),
+        ]);
     }
 
     public static getInstance(): ExpressApp {
@@ -28,10 +32,12 @@ export class ExpressApp {
         // tekshirish kerak async holat bilan async siz holatni farqlarini
         // kiyin workerlar bilan ishlarib ham tekshirish kerak 
         // loglarni workergami yoki boshqa narsaga olib o'tish kerak
-        this.app.get("/", async (_, res) => {
-            res.send({ message: "Hello world"});
+    }
+
+    private initialazeRoutes(routes: Routes[]) {
+        routes.forEach((route: Routes) => {
+            this.app.use("/", route.router);
         });
-        this.app.use("/", mainRouter);
     }
 
     public start(PORT: number) {

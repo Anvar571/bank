@@ -1,29 +1,18 @@
-import { Router, Request, Response } from "express";
-import { HashService } from "../../../app/services/hash.service";
-import { UserServiceImpl } from "../../../app/users/user.service";
-import { UserRepositoryImpl } from "../../db/db.service";
+import { Router } from "express";
+import { UserController } from "../controllers/users.controller";
 
-export const UserRoute = Router();
+export class UserRoute {
+    public path: string;
+    public router: Router;
+    private userController = new UserController();
 
-UserRoute.get("/", async (req: Request, res: Response) => {
-    const userRepo = UserRepositoryImpl.getInstance();
-    const hashService = new HashService();
-    const userService = new UserServiceImpl(userRepo, hashService);
-    const result = await userService.findAllUsers();
-    const result1 = await userService.findById("username");
+    constructor(path?: string) {
+        this.path = path || "users";
+        this.router = Router();
+        this.initialaze();
+    }
 
-    console.log(result1, "natija");
-
-    res.send(result);
-});
-
-UserRoute.get("/:id", async (req: Request, res: Response) => {
-    const userRepo = UserRepositoryImpl.getInstance();
-    const hashService = new HashService();
-    const userService = new UserServiceImpl(userRepo, hashService);
-    const result = await userService.findById("username");
-    console.log(result, "Res");
-    
-    res.send(result);
-})
-
+    private initialaze() {
+        this.router.get(`/${this.path}`, this.userController.findAllUsers.bind(this.userController))
+    }
+}
