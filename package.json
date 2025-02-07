@@ -6,9 +6,11 @@
   "scripts": {
     "start": "dist/src/main.js",
     "dev": "nodemon ./src/main.ts",
+    "format": "prettier --ignore-unknown --write .",
     "test": "",
     "build": "npx tsc",
-    "test:pref": "ts-node ./test/load-test.ts"
+    "test:pref": "ts-node ./test/load-test.ts",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +23,10 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "nodemon": "^3.1.9",
+    "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   }
