@@ -7,6 +7,7 @@
     "start": "dist/src/main.js",
     "dev": "nodemon ./src/main.ts",
     "format": "prettier --ignore-unknown --write .",
+    "lint": "eslint --fix .",
     "build": "npx tsc --outDir dist",
     "test:pref": "ts-node ./test/load-test.ts",
     "prepare": "husky"
@@ -20,13 +21,19 @@
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.19.0",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.6",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "eslint": "^9.19.0",
     "husky": "^9.1.7",
+    "jiti": "^2.4.2",
     "lint-staged": "^15.4.3",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0"
   }
 }
