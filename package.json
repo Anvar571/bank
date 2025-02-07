@@ -7,8 +7,7 @@
     "start": "dist/src/main.js",
     "dev": "nodemon ./src/main.ts",
     "format": "prettier --ignore-unknown --write .",
-    "test": "",
-    "build": "npx tsc",
+    "build": "npx tsc --outDir dist",
     "test:pref": "ts-node ./test/load-test.ts",
     "prepare": "husky"
   },
