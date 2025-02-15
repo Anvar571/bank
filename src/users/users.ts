@@ -1,5 +1,5 @@
 import { BaseClass } from '../core/base';
-import { UserModel } from './user.types';
+import { UserModel } from '../models/user.types';
 
 export class User extends BaseClass<UserModel> implements UserModel {
   constructor(userModel: UserModel) {

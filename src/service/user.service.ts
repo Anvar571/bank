@@ -1,7 +1,12 @@
+import {
+  UserService,
+  UserDto,
+  UserResponse,
+  UserError,
+} from '../models/user.types';
+import { UserRepository } from '../repository/user.repository';
 import { HashService } from '../utility/hash.service';
-import { UserRepository } from './user.repository';
-import { UserDto, UserError, UserResponse, UserService } from './user.types';
-import { User } from './users';
+import { User } from '../users/users';
 
 export class UserServiceImpl implements UserService {
   private userRepository: UserRepository;

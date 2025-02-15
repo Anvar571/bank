@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request } from 'express';
 import { HashService } from '../utility/hash.service';
-import { UserServiceImpl } from '../users/user.service';
+import { UserServiceImpl } from '../service/user.service';
 import { UserRepositoryImpl } from '../db/db.service';
 
 export class UserController {
