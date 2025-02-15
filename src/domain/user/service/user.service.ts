@@ -1,12 +1,7 @@
-import {
-  UserService,
-  UserDto,
-  UserResponse,
-  UserError,
-} from '../models/user.types';
+import { UserService, UserDto, UserResponse, UserError } from '../user.types';
+import { HashService } from '../../../application/service/hash.service';
 import { UserRepository } from '../repository/user.repository';
-import { HashService } from '../utility/hash.service';
-import { User } from '../users/users';
+import { User } from '../users';
 
 export class UserServiceImpl implements UserService {
   private userRepository: UserRepository;
@@ -15,6 +10,10 @@ export class UserServiceImpl implements UserService {
   constructor(userRepository: UserRepository, hashService: HashService) {
     this.userRepository = userRepository;
     this.hashService = hashService;
+  }
+
+  async update(user: User): Promise<User | undefined> {
+    return;
   }
 
   public async findAllUsers(): Promise<User[] | []> {

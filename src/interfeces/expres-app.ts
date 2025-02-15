@@ -1,7 +1,7 @@
 import express, { Application, Router } from 'express';
-import { LoggerService } from './logging/logger.service';
-import { Routes } from './interface/route.interface';
-import { UserRoute } from './routes/users.route';
+import { LoggerService } from './infrastructure/logging/logger.service';
+import { Routes } from './temp/interface/route.interface';
+import { UserRoute } from './interfeces/routes/users.route';
 
 export class ExpressApp {
   private static instance: ExpressApp;

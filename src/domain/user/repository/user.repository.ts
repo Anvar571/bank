@@ -1,5 +1,5 @@
-import { UserDto, UserResponse, UserModel } from '../models/user.types';
-import { User } from '../users/users';
+import { UserDto, UserResponse, UserModel } from '../user.types';
+import { User } from '../users';
 
 export interface UserRepository {
   create: (userModel: UserDto) => Promise<UserResponse>;

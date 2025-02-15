@@ -1,5 +1,8 @@
-import { LoggerService } from '../logging/logger.service';
-import { AppError, DatabaseConnectionError } from './custom.errors';
+import {
+  AppError,
+  DatabaseConnectionError,
+} from '../domain/errors/custom.errors';
+import { LoggerService } from './logging/logger.service';
 import { Request, Response } from 'express';
 
 export class ErrorHandler {

@@ -39,4 +39,5 @@ export interface UserService {
   create: (user: UserDto) => Promise<UserResponse | UserError>;
   findAllUsers: () => Promise<User[] | []>;
   findById: (username: string) => Promise<User | undefined>;
+  update: (user: User) => Promise<User | undefined>;
 }
