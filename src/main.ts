@@ -1,8 +1,8 @@
 import ConfigService from './shared/config/config';
-import { LoggerService } from './infra/logging/logger.service';
-import { LoggingConfiguration } from './infra/logging/logging.config';
+import { LoggerService } from './logging/logger.service';
+import { LoggingConfiguration } from './logging/logging.config';
 import { ErrorHandler } from './shared/errors/error.handler';
-import { ExpressApp } from './infra/express/main';
+import { ExpressApp } from './expres-app';
 
 export function startServer() {
   LoggingConfiguration.configure({

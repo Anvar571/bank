@@ -1,7 +1,7 @@
 import { NextFunction, Response, Request } from 'express';
-import { HashService } from '../../../app/services/hash.service';
-import { UserServiceImpl } from '../../../app/users/user.service';
-import { UserRepositoryImpl } from '../../db/db.service';
+import { HashService } from '../utility/hash.service';
+import { UserServiceImpl } from '../users/user.service';
+import { UserRepositoryImpl } from '../db/db.service';
 
 export class UserController {
   private userRepo = UserRepositoryImpl.getInstance();

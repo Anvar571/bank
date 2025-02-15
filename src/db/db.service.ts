@@ -1,11 +1,11 @@
-import { UserRepository } from '../../app/users/user.repository';
+import { UserRepository } from '../../users/user.repository';
 import {
   UserDto,
   UserModel,
   UserResponse,
   UserType,
-} from '../../app/users/user.types';
-import { User } from '../../app/users/users';
+} from '../../users/user.types';
+import { User } from '../../users/users';
 
 export class UserRepositoryImpl implements UserRepository {
   private static instance: UserRepositoryImpl;

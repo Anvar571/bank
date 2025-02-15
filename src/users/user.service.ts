@@ -1,4 +1,4 @@
-import { HashService } from '../services/hash.service';
+import { HashService } from '../utility/hash.service';
 import { UserRepository } from './user.repository';
 import { UserDto, UserError, UserResponse, UserService } from './user.types';
 import { User } from './users';

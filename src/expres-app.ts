@@ -1,6 +1,6 @@
 import express, { Application, Router } from 'express';
-import { LoggerService } from '../logging/logger.service';
-import { Routes } from '../../shared/interface/route.interface';
+import { LoggerService } from './logging/logger.service';
+import { Routes } from './shared/interface/route.interface';
 import { UserRoute } from './routes/users.route';
 
 export class ExpressApp {

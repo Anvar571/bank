@@ -1,4 +1,4 @@
-import { LoggerService } from '../../infra/logging/logger.service';
+import { LoggerService } from '../../logging/logger.service';
 import { AppError, DatabaseConnectionError } from './custom.errors';
 import { Request, Response } from 'express';
 
