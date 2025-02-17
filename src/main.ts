@@ -42,3 +42,10 @@ export function startServer() {
 }
 
 startServer();
+
+/**
+ *  Mijoz ma’lumotlari
+    Karta ma’lumotlari
+    Bank hisob raqami
+    To‘lov tizimi integratsiyasi (VISA, Mastercard, Uzcard, Humo)
+ */
